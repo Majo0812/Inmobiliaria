@@ -136,35 +136,14 @@
                 role="menu"
                 aria-label="Menú de cuenta"
               >
-                <div class="user-dropdown-current">
-                  <span class="avatar">AD</span>
-                  <div>
-                    <strong>Administrador</strong
-                    ><small>administrador@inmobiliaria.mx</small>
-                  </div>
+                <div class="user-dropdown-current" id="userDropdownCurrent">
+                  <!-- Contenido generado por JavaScript según la cuenta activa -->
                 </div>
 
                 <div class="user-dropdown-label">Cambiar de cuenta</div>
-                <button
-                  class="user-dropdown-item"
-                  type="button"
-                  role="menuitem"
-                  data-account="Agente de ventas"
-                  data-initials="AG"
-                  data-avatar-class="gold-avatar"
-                >
-                  <span class="avatar gold-avatar">AG</span> Agente de ventas
-                </button>
-                <button
-                  class="user-dropdown-item"
-                  type="button"
-                  role="menuitem"
-                  data-account="Asistente"
-                  data-initials="AS"
-                  data-avatar-class="aqua-avatar"
-                >
-                  <span class="avatar aqua-avatar">AS</span> Asistente
-                </button>
+                <div id="userSwitchList">
+                  <!-- Botones generados por JavaScript: lista las cuentas que NO están activas -->
+                </div>
 
                 <div class="user-dropdown-divider"></div>
                 <button
@@ -760,13 +739,100 @@
     </div>
 
     <script>
-      // Simulación del menú de cuenta (maquetado no funcional, sin datos reales)
+      // Simulación del menú de cuenta (maquetado no funcional, sin datos reales).
+      // El estado (cuenta activa) vive únicamente en memoria del navegador:
+      // se reinicia al recargar la página, no hay backend involucrado.
       (function () {
         var menu = document.getElementById("userMenu");
         var trigger = document.getElementById("userMenuTrigger");
+        var dropdownCurrent = document.getElementById("userDropdownCurrent");
+        var switchList = document.getElementById("userSwitchList");
         var toast = document.getElementById("appToast");
         var toastMessage = toast.querySelector(".toast-message");
         var toastTimer = null;
+
+        // Cuentas disponibles en el maquetado (mismos datos que la sección "Usuarios")
+        var accounts = [
+          {
+            id: "admin",
+            name: "Administrador",
+            role: "Administrador",
+            email: "administrador@inmobiliaria.mx",
+            initials: "AD",
+            avatarClass: "",
+          },
+          {
+            id: "agente",
+            name: "Agente de ventas",
+            role: "Agente de ventas",
+            email: "agente@inmobiliaria.mx",
+            initials: "AG",
+            avatarClass: "gold-avatar",
+          },
+          {
+            id: "asistente",
+            name: "Asistente",
+            role: "Asistente",
+            email: "asistente@inmobiliaria.mx",
+            initials: "AS",
+            avatarClass: "aqua-avatar",
+          },
+        ];
+
+        var activeAccountId = "admin";
+
+        function getAccount(id) {
+          return accounts.filter(function (a) {
+            return a.id === id;
+          })[0];
+        }
+
+        function avatarHTML(account, extraClass) {
+          var cls =
+            "avatar" +
+            (account.avatarClass ? " " + account.avatarClass : "") +
+            (extraClass ? " " + extraClass : "");
+          return '<span class="' + cls + '">' + account.initials + "</span>";
+        }
+
+        function render() {
+          var active = getAccount(activeAccountId);
+
+          // Chip del topbar
+          var chipAvatar = trigger.querySelector(".avatar");
+          var chipName = trigger.querySelector("strong");
+          var chipRole = trigger.querySelector("small");
+          chipAvatar.className =
+            "avatar" + (active.avatarClass ? " " + active.avatarClass : "");
+          chipAvatar.textContent = active.initials;
+          chipName.textContent = active.name;
+          chipRole.textContent = active.role;
+
+          // Tarjeta "cuenta actual" dentro del menú
+          dropdownCurrent.innerHTML =
+            avatarHTML(active) +
+            "<div><strong>" +
+            active.name +
+            "</strong><small>" +
+            active.email +
+            "</small></div>";
+
+          // Lista de "cambiar de cuenta": todas menos la activa
+          switchList.innerHTML = "";
+          accounts
+            .filter(function (a) {
+              return a.id !== activeAccountId;
+            })
+            .forEach(function (a) {
+              var btn = document.createElement("button");
+              btn.type = "button";
+              btn.className = "user-dropdown-item";
+              btn.setAttribute("role", "menuitem");
+              btn.setAttribute("data-account-id", a.id);
+              btn.innerHTML = avatarHTML(a) + " " + a.name;
+              switchList.appendChild(btn);
+            });
+        }
 
         function showToast(message) {
           toastMessage.textContent = message;
@@ -802,31 +868,16 @@
           }, 400);
         }
 
-        // Cambiar de cuenta (simulado)
-        menu
-          .querySelectorAll(".user-dropdown-item[data-account]")
-          .forEach(function (item) {
-            item.addEventListener("click", function () {
-              var account = item.getAttribute("data-account");
-              var initials = item.getAttribute("data-initials");
-              var avatarClass = item.getAttribute("data-avatar-class");
-
-              var chipAvatar = trigger.querySelector(".avatar");
-              var chipName = trigger.querySelector("strong");
-              var chipRole = trigger.querySelector("small");
-
-              chipAvatar.className =
-                "avatar" + (avatarClass ? " " + avatarClass : "");
-              chipAvatar.textContent = initials;
-              chipName.textContent = account;
-              chipRole.textContent = account;
-
-              closeMenu();
-              showToast(
-                "Has cambiado a la cuenta de " + account + " (simulado)",
-              );
-            });
-          });
+        // Cambiar de cuenta (simulado) — delegación de eventos porque la lista se regenera
+        switchList.addEventListener("click", function (e) {
+          var item = e.target.closest(".user-dropdown-item[data-account-id]");
+          if (!item) return;
+          var account = getAccount(item.getAttribute("data-account-id"));
+          activeAccountId = account.id;
+          render();
+          closeMenu();
+          showToast("Has cambiado a la cuenta de " + account.name);
+        });
 
         // Cerrar sesión (simulado)
         document
@@ -840,6 +891,8 @@
                 .scrollIntoView({ behavior: "smooth" });
             }, 900);
           });
+
+        render();
       })();
     </script>
   </body>
