@@ -375,3 +375,34 @@ footer{display:flex;justify-content:space-between;padding:0 38px 35px;color:var(
   .support-contact{text-align:left;border-left:0;border-top:1px solid rgba(255,255,255,.18);padding:20px 0 0;width:100%}
   footer{padding:0 20px 25px;display:grid;gap:8px}
 }
+/* ==========================================================
+   MODAL DE SOPORTE (solo navegable, sin backend)
+   ========================================================== */
+.modal-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(8,59,80,.55);
+  align-items:center;
+  justify-content:center;
+  z-index:50;
+}
+.modal-overlay:target{
+  display:flex;
+}
+.modal-card{
+  background:var(--white);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:32px;
+  max-width:420px;
+  width:90%;
+  position:relative;
+}
+.modal-close{
+  position:absolute;
+  top:16px;
+  right:18px;
+  font-size:1.2rem;
+  color:var(--muted);
+}

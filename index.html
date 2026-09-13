@@ -322,20 +322,50 @@
         </div>
       </section>
 
-      <!-- =====================================================
-           SOPORTE / FOOTER
-           ===================================================== -->
-      <section class="support-banner">
-        <div><span class="eyebrow">Acompañamiento técnico</span><h2>Estamos contigo durante la puesta en marcha</h2><p>Soporte para incidencias, dudas de uso, configuración relacionada con el sistema y seguimiento de solicitudes.</p></div>
-        <div class="support-contact"><strong>474 128 3518</strong><span>Ingenieras3mil@gmail.com</span></div>
-      </section>
+<!-- =====================================================
+     SOPORTE / FOOTER
+     ===================================================== -->
+<section class="support-banner">
+  <div><span class="eyebrow">Acompañamiento técnico</span><h2>Estamos contigo durante la puesta en marcha</h2><p>Soporte para incidencias, dudas de uso, configuración relacionada con el sistema y seguimiento de solicitudes.</p></div>
+  <div class="support-contact"><strong>474 128 3518</strong><span>Ingenieras3mil@gmail.com</span></div>
+</section>
 
-      <footer>
-        <span>InmoGestión · Propuesta de plataforma inmobiliaria</span>
-        <span>Hosting y dominio incluidos inicialmente según propuesta</span>
-      </footer>
-    </main>
+<div class="modal-overlay" id="soporte">
+  <div class="modal-card">
+    <a class="modal-close" href="#cerrar">✕</a>
+    <span class="eyebrow">Contacto directo</span>
+    <h3>Escríbenos a soporte</h3>
+    <p>Cuéntanos tu incidencia y te responderemos a la brevedad.</p>
+    <div class="form-grid">
+      <label>Asunto
+        <input type="text" placeholder="Ej. Duda de configuración">
+      </label>
+      <label>Mensaje
+        <textarea rows="3" placeholder="Describe tu incidencia..."></textarea>
+      </label>
+    </div>
+    <div class="form-actions">
+      <span class="helper">Se enviará a Ingenieras3mil@gmail.com</span>
+      <a class="btn btn-primary" href="#soporte-enviado">Enviar mensaje</a>
+    </div>
   </div>
+</div>
 
+<div class="modal-overlay" id="soporte-enviado">
+  <div class="modal-card">
+    <a class="modal-close" href="#cerrar">✕</a>
+    <span class="eyebrow">Listo</span>
+    <h3>Tu mensaje fue enviado</h3>
+    <p>El equipo de soporte lo revisará y te contactará por correo o teléfono.</p>
+    <div class="form-actions">
+      <a class="btn btn-secondary" href="#cerrar">Cerrar</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <span>InmoGestión · Propuesta de plataforma inmobiliaria</span>
+  <span>Hosting y dominio incluidos inicialmente según propuesta</span>
+</footer>
 </body>
 </html>
