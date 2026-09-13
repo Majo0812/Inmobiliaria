@@ -1,341 +1,757 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>InmoGestión | Plataforma inmobiliaria</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-
-  <!-- =========================================================
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InmoGestión | Plataforma inmobiliaria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- =========================================================
        LOGIN
        ========================================================= -->
-  <section class="login-screen" id="login">
-    <div class="login-decoration"></div>
-    <div class="login-card">
-      <div class="brand brand-center">
-        <span class="brand-mark">IG</span>
-        <div>
-          <strong>InmoGestión</strong>
-          <small>Gestión integral de inmuebles</small>
+    <section class="login-screen" id="login">
+      <div class="login-decoration"></div>
+      <div class="login-card">
+        <div class="brand brand-center">
+          <span class="brand-mark">IG</span>
+          <div>
+            <strong>InmoGestión</strong>
+            <small>Gestión integral de inmuebles</small>
+          </div>
         </div>
+
+        <div class="login-heading">
+          <span class="eyebrow">Acceso seguro</span>
+          <h1>Bienvenido</h1>
+          <p>Ingresa con el usuario y contraseña previamente registrados.</p>
+        </div>
+
+        <form class="form-grid">
+          <label>
+            Usuario
+            <input type="text" placeholder="Ej. administrador" />
+          </label>
+          <label>
+            Contraseña
+            <input type="password" placeholder="••••••••" />
+          </label>
+          <button
+            class="btn btn-primary"
+            type="button"
+            onclick="
+              document
+                .querySelector('#app')
+                .scrollIntoView({ behavior: 'smooth' })
+            "
+          >
+            Ingresar al sistema
+          </button>
+        </form>
       </div>
+    </section>
 
-      <div class="login-heading">
-        <span class="eyebrow">Acceso seguro</span>
-        <h1>Bienvenido</h1>
-        <p>Ingresa con el usuario y contraseña previamente registrados.</p>
-      </div>
-
-      <form class="form-grid">
-        <label>
-          Usuario
-          <input type="text" placeholder="Ej. administrador">
-        </label>
-        <label>
-          Contraseña
-          <input type="password" placeholder="••••••••">
-        </label>
-        <button class="btn btn-primary" type="button" onclick="document.querySelector('#app').scrollIntoView({behavior:'smooth'})">
-          Ingresar al sistema
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <!-- =========================================================
+    <!-- =========================================================
        APPLICATION SHELL
        ========================================================= -->
-  <div class="app" id="app">
-
-    <aside class="sidebar">
-      <div class="brand">
-        <span class="brand-mark">IG</span>
-        <div>
-          <strong>InmoGestión</strong>
-          <small>Panel inmobiliario</small>
-        </div>
-      </div>
-
-      <div class="sidebar-label">Principal</div>
-      <nav class="nav">
-        <a class="nav-item active" href="#dashboard"><span>⌂</span> Dashboard</a>
-        <a class="nav-item" href="#pagos"><span>▣</span> Pagos</a>
-        <a class="nav-item" href="#historial"><span>▤</span> Histórico y expedientes</a>
-        <a class="nav-item" href="#registro"><span>＋</span> Nuevo registro</a>
-        <a class="nav-item" href="#agenda"><span>□</span> Agenda</a>
-        <a class="nav-item" href="#estatus"><span>◈</span> Estatus del inmueble</a>
-      </nav>
-
-      <div class="sidebar-label">Administración</div>
-      <nav class="nav">
-        <a class="nav-item" href="#usuarios"><span>◎</span> Usuarios</a>
-      </nav>
-
-      <div class="sidebar-footer">
-        <div class="support-mini">
-          <span class="status-dot"></span>
+    <div class="app" id="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand-mark">IG</span>
           <div>
-            <strong>Soporte activo</strong>
-            <small>Atención y seguimiento</small>
+            <strong>InmoGestión</strong>
+            <small>Panel inmobiliario</small>
           </div>
         </div>
-      </div>
-    </aside>
 
-    <main class="main">
-      <header class="topbar">
-        <div>
-          <span class="eyebrow">Miércoles, 09 de septiembre de 2026</span>
-          <h2>Panel de control</h2>
-        </div>
-        <div class="top-actions">
-          <button class="icon-btn" title="Notificaciones">♢<span class="notification"></span></button>
-          <div class="user-chip">
-            <span class="avatar">AD</span>
-            <div><strong>Administrador</strong><small>Administrador</small></div>
+        <div class="sidebar-label">Principal</div>
+        <nav class="nav">
+          <a class="nav-item active" href="#dashboard"
+            ><span>⌂</span> Dashboard</a
+          >
+          <a class="nav-item" href="#pagos"><span>▣</span> Pagos</a>
+          <a class="nav-item" href="#historial"
+            ><span>▤</span> Histórico y expedientes</a
+          >
+          <a class="nav-item" href="#registro"
+            ><span>＋</span> Nuevo registro</a
+          >
+          <a class="nav-item" href="#agenda"><span>□</span> Agenda</a>
+          <a class="nav-item" href="#estatus"
+            ><span>◈</span> Estatus del inmueble</a
+          >
+        </nav>
+
+        <div class="sidebar-label">Administración</div>
+        <nav class="nav">
+          <a class="nav-item" href="#usuarios"><span>◎</span> Usuarios</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="support-mini">
+            <span class="status-dot"></span>
+            <div>
+              <strong>Soporte activo</strong>
+              <small>Atención y seguimiento</small>
+            </div>
           </div>
         </div>
-      </header>
+      </aside>
 
-      <!-- =====================================================
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <span class="eyebrow">Miércoles, 09 de septiembre de 2026</span>
+            <h2>Panel de control</h2>
+          </div>
+
+          <!-- ===================================================
+               ACCIONES SUPERIORES (NOTIFICACIONES + USUARIO)
+               =================================================== -->
+          <div class="top-actions">
+            <!-- Módulo de Notificaciones simulado (HTML/CSS) -->
+            <div
+              class="notif-wrapper icon-btn"
+              tabindex="0"
+              title="Notificaciones"
+            >
+              <span class="notif-icon-symbol">♢</span>
+              <span class="notification"></span>
+
+              <div class="notif-dropdown">
+                <div class="notif-header">
+                  <strong>Notificaciones</strong>
+                  <span class="badge badge-aqua">3 nuevas</span>
+                </div>
+
+                <details class="notif-container" open>
+                  <ul class="notif-list">
+                    <li class="notif-item unread">
+                      <span class="notif-dot"></span>
+                      <div>
+                        <strong>Nueva cita programada</strong>
+                        <small
+                          >María López agendó una visita en Casa
+                          Jardines.</small
+                        >
+                        <time>Hace 10 min</time>
+                      </div>
+                    </li>
+                    <li class="notif-item unread">
+                      <span class="notif-dot"></span>
+                      <div>
+                        <strong>Comprobante subido</strong>
+                        <small>Se adjuntó el pago del Local Paseo Real.</small>
+                        <time>Hace 1 hora</time>
+                      </div>
+                    </li>
+                    <li class="notif-item unread">
+                      <span class="notif-dot"></span>
+                      <div>
+                        <strong>Estatus actualizado</strong>
+                        <small
+                          >Residencia Los Encinos pasó a estado
+                          Pendiente.</small
+                        >
+                        <time>Hace 3 horas</time>
+                      </div>
+                    </li>
+                  </ul>
+
+                  <summary class="notif-footer">
+                    <span class="notif-link-simulated"
+                      >Marcar todas como leídas</span
+                    >
+                  </summary>
+                </details>
+
+                <div class="notif-empty-state">
+                  <small>No tienes notificaciones pendientes</small>
+                </div>
+              </div>
+            </div>
+
+            <div class="user-chip">
+              <span class="avatar">AD</span>
+              <div>
+                <strong>Administrador</strong><small>Administrador</small>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- =====================================================
            DASHBOARD
            ===================================================== -->
-      <section class="section" id="dashboard">
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">Resumen general</span>
-            <h1>Dashboard</h1>
-            <p>Visualiza ganancias, comisiones, metas y oportunidades de venta.</p>
-          </div>
-          <button class="btn btn-secondary">Este mes ▾</button>
-        </div>
-
-        <div class="stats-grid">
-          <article class="stat-card">
-            <span class="stat-label">Meta mensual</span>
-            <strong>$450,000</strong>
-            <span class="stat-note positive">↑ 12.4% respecto al mes anterior</span>
-          </article>
-          <article class="stat-card">
-            <span class="stat-label">Ganancias actuales</span>
-            <strong>$327,500</strong>
-            <span class="stat-note positive">72.8% de la meta</span>
-          </article>
-          <article class="stat-card">
-            <span class="stat-label">Faltante para la meta</span>
-            <strong>$122,500</strong>
-            <span class="stat-note">Objetivo pendiente</span>
-          </article>
-          <article class="stat-card accent">
-            <span class="stat-label">Comisiones</span>
-            <strong>$49,125</strong>
-            <span class="stat-note">Acumulado del mes</span>
-          </article>
-        </div>
-
-        <div class="dashboard-grid">
-          <article class="panel goal-panel">
-            <div class="panel-header">
-              <div>
-                <span class="eyebrow">Progreso</span>
-                <h3>Dinero faltante para la meta</h3>
-              </div>
-              <span class="badge badge-aqua">72.8%</span>
-            </div>
-            <div class="progress-ring">
-              <div class="ring-center">
-                <strong>72.8%</strong>
-                <small>alcanzado</small>
-              </div>
-            </div>
-            <div class="goal-footer">
-              <div><span class="dot teal"></span> Ganado <strong>$327,500</strong></div>
-              <div><span class="dot sand"></span> Faltante <strong>$122,500</strong></div>
-            </div>
-          </article>
-
-          <article class="panel chart-panel">
-            <div class="panel-header">
-              <div>
-                <span class="eyebrow">Proyección</span>
-                <h3>Ganancias proyectadas</h3>
-              </div>
-              <span class="chart-legend"><i></i> Ventas</span>
-            </div>
-            <div class="chart">
-              <div class="chart-y"><span>$500k</span><span>$400k</span><span>$300k</span><span>$200k</span><span>$100k</span><span>$0</span></div>
-              <div class="chart-area">
-                <div class="gridline" style="top:0"></div><div class="gridline" style="top:20%"></div>
-                <div class="gridline" style="top:40%"></div><div class="gridline" style="top:60%"></div>
-                <div class="gridline" style="top:80%"></div><div class="gridline" style="top:100%"></div>
-                <svg viewBox="0 0 600 220" preserveAspectRatio="none" aria-label="Gráfica de ganancias">
-                  <path d="M0,185 C70,160 90,175 150,130 S235,120 285,95 S365,115 415,72 S510,62 600,25" fill="none" stroke="currentColor" stroke-width="4"/>
-                  <path d="M0,185 C70,160 90,175 150,130 S235,120 285,95 S365,115 415,72 S510,62 600,25 L600,220 L0,220 Z" fill="currentColor" opacity=".10"/>
-                </svg>
-              </div>
-            </div>
-            <div class="chart-x"><span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span><span>May</span><span>Jun</span><span>Jul</span><span>Ago</span></div>
-          </article>
-        </div>
-
-        <article class="panel">
-          <div class="panel-header">
+        <section class="section" id="dashboard">
+          <div class="section-heading">
             <div>
-              <span class="eyebrow">Recomendaciones</span>
-              <h3>Inmuebles que pueden acercarte a la meta</h3>
+              <span class="eyebrow">Resumen general</span>
+              <h1>Dashboard</h1>
+              <p>
+                Visualiza ganancias, comisiones, metas y oportunidades de venta.
+              </p>
             </div>
-            <a href="#estatus" class="text-link">Ver todos →</a>
+            <button class="btn btn-secondary">Este mes ▾</button>
           </div>
-          <div class="property-grid">
-            <article class="property-card">
-              <div class="property-image property-one"><span>Disponible</span></div>
-              <div class="property-body"><small>Residencial · Lagos de Moreno</small><h4>Casa Jardines del Lago</h4><strong>$2,850,000</strong><p>Alta oportunidad por demanda de la zona.</p></div>
-            </article>
-            <article class="property-card">
-              <div class="property-image property-two"><span>Disponible</span></div>
-              <div class="property-body"><small>Residencial · Centro</small><h4>Residencia Los Encinos</h4><strong>$3,420,000</strong><p>Precio elevado con alta comisión potencial.</p></div>
-            </article>
-            <article class="property-card">
-              <div class="property-image property-three"><span>Disponible</span></div>
-              <div class="property-body"><small>Comercial · Zona Norte</small><h4>Local Paseo Real</h4><strong>$1,980,000</strong><p>Propiedad popular en la zona.</p></div>
-            </article>
-          </div>
-        </article>
-      </section>
 
-      <!-- =====================================================
+          <div class="stats-grid">
+            <article class="stat-card">
+              <span class="stat-label">Meta mensual</span>
+              <strong>$450,000</strong>
+              <span class="stat-note positive"
+                >↑ 12.4% respecto al mes anterior</span
+              >
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Ganancias actuales</span>
+              <strong>$327,500</strong>
+              <span class="stat-note positive">72.8% de la meta</span>
+            </article>
+            <article class="stat-card">
+              <span class="stat-label">Faltante para la meta</span>
+              <strong>$122,500</strong>
+              <span class="stat-note">Objetivo pendiente</span>
+            </article>
+            <article class="stat-card accent">
+              <span class="stat-label">Comisiones</span>
+              <strong>$49,125</strong>
+              <span class="stat-note">Acumulado del mes</span>
+            </article>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel goal-panel">
+              <div class="panel-header">
+                <div>
+                  <span class="eyebrow">Progreso</span>
+                  <h3>Dinero faltante para la meta</h3>
+                </div>
+                <span class="badge badge-aqua">72.8%</span>
+              </div>
+              <div class="progress-ring">
+                <div class="ring-center">
+                  <strong>72.8%</strong>
+                  <small>alcanzado</small>
+                </div>
+              </div>
+              <div class="goal-footer">
+                <div>
+                  <span class="dot teal"></span> Ganado
+                  <strong>$327,500</strong>
+                </div>
+                <div>
+                  <span class="dot sand"></span> Faltante
+                  <strong>$122,500</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel chart-panel">
+              <div class="panel-header">
+                <div>
+                  <span class="eyebrow">Proyección</span>
+                  <h3>Ganancias proyectadas</h3>
+                </div>
+                <span class="chart-legend"><i></i> Ventas</span>
+              </div>
+              <div class="chart">
+                <div class="chart-y">
+                  <span>$500k</span><span>$400k</span><span>$300k</span
+                  ><span>$200k</span><span>$100k</span><span>$0</span>
+                </div>
+                <div class="chart-area">
+                  <div class="gridline" style="top: 0"></div>
+                  <div class="gridline" style="top: 20%"></div>
+                  <div class="gridline" style="top: 40%"></div>
+                  <div class="gridline" style="top: 60%"></div>
+                  <div class="gridline" style="top: 80%"></div>
+                  <div class="gridline" style="top: 100%"></div>
+                  <svg
+                    viewBox="0 0 600 220"
+                    preserveAspectRatio="none"
+                    aria-label="Gráfica de ganancias"
+                  >
+                    <path
+                      d="M0,185 C70,160 90,175 150,130 S235,120 285,95 S365,115 415,72 S510,62 600,25"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="4"
+                    />
+                    <path
+                      d="M0,185 C70,160 90,175 150,130 S235,120 285,95 S365,115 415,72 S510,62 600,25 L600,220 L0,220 Z"
+                      fill="currentColor"
+                      opacity=".10"
+                    />
+                  </svg>
+                </div>
+              </div>
+              <div class="chart-x">
+                <span>Ene</span><span>Feb</span><span>Mar</span><span>Abr</span
+                ><span>May</span><span>Jun</span><span>Jul</span
+                ><span>Ago</span>
+              </div>
+            </article>
+          </div>
+
+          <article class="panel">
+            <div class="panel-header">
+              <div>
+                <span class="eyebrow">Recomendaciones</span>
+                <h3>Inmuebles que pueden acercarte a la meta</h3>
+              </div>
+              <a href="#estatus" class="text-link">Ver todos →</a>
+            </div>
+            <div class="property-grid">
+              <article class="property-card">
+                <div class="property-image property-one">
+                  <span>Disponible</span>
+                </div>
+                <div class="property-body">
+                  <small>Residencial · Lagos de Moreno</small>
+                  <h4>Casa Jardines del Lago</h4>
+                  <strong>$2,850,000</strong>
+                  <p>Alta oportunidad por demanda de la zona.</p>
+                </div>
+              </article>
+              <article class="property-card">
+                <div class="property-image property-two">
+                  <span>Disponible</span>
+                </div>
+                <div class="property-body">
+                  <small>Residencial · Centro</small>
+                  <h4>Residencia Los Encinos</h4>
+                  <strong>$3,420,000</strong>
+                  <p>Precio elevado con alta comisión potencial.</p>
+                </div>
+              </article>
+              <article class="property-card">
+                <div class="property-image property-three">
+                  <span>Disponible</span>
+                </div>
+                <div class="property-body">
+                  <small>Comercial · Zona Norte</small>
+                  <h4>Local Paseo Real</h4>
+                  <strong>$1,980,000</strong>
+                  <p>Propiedad popular en la zona.</p>
+                </div>
+              </article>
+            </div>
+          </article>
+        </section>
+
+        <!-- =====================================================
            PAGOS
            ===================================================== -->
-      <section class="section" id="pagos">
-        <div class="section-heading"><div><span class="eyebrow">Comprobantes</span><h1>Pagos</h1><p>Adjunta el comprobante de transferencia asociado al inmueble vendido.</p></div></div>
-        <div class="form-card">
-          <div class="form-title"><span class="number">01</span><div><h3>Registrar comprobante</h3><p>Selecciona el inmueble desde la agenda y adjunta el archivo PNG.</p></div></div>
-          <div class="form-grid two">
-            <label>Inmueble<select><option>Casa Jardines del Lago</option><option>Residencia Los Encinos</option><option>Local Paseo Real</option></select></label>
-            <label>Fecha de transferencia<input type="date"></label>
-          </div>
-          <label>Comprobante de transferencia
-            <div class="upload"><span>↑</span><div><strong>Arrastra tu comprobante aquí</strong><small>o haz clic para seleccionar un archivo .png</small></div><button class="btn btn-secondary" type="button">Seleccionar</button></div>
-          </label>
-          <div class="form-actions"><span class="helper">La validación de la transferencia corresponde al cliente; el sistema registra y almacena el comprobante.</span><button class="btn btn-primary">Guardar comprobante</button></div>
-        </div>
-      </section>
-
-      <!-- =====================================================
-           HISTORIAL Y EXPEDIENTES
-           ===================================================== -->
-      <section class="section" id="historial">
-        <div class="section-heading"><div><span class="eyebrow">Registro de ventas</span><h1>Histórico y expedientes</h1><p>Consulta las ventas realizadas y resguarda el expediente digital correspondiente.</p></div><button class="btn btn-secondary">Exportar</button></div>
-        <div class="panel table-panel">
-          <div class="table-toolbar"><input class="search" placeholder="Buscar cliente o inmueble..."><span class="table-count">3 ventas registradas</span></div>
-          <div class="table-wrap"><table><thead><tr><th>Cliente</th><th>Inmueble</th><th>Fecha</th><th>Monto</th><th>Expediente</th><th></th></tr></thead>
-          <tbody>
-            <tr><td><strong>María López</strong><small>Cliente</small></td><td>Casa Jardines</td><td>06/09/2026</td><td>$2,850,000</td><td><span class="file-ok">✓ Expediente.pdf</span></td><td><button class="more">•••</button></td></tr>
-            <tr><td><strong>Carlos Ramírez</strong><small>Cliente</small></td><td>Local Paseo Real</td><td>02/09/2026</td><td>$1,980,000</td><td><span class="file-ok">✓ Expediente.pdf</span></td><td><button class="more">•••</button></td></tr>
-            <tr><td><strong>Ana Torres</strong><small>Cliente</small></td><td>Residencia Encinos</td><td>28/08/2026</td><td>$3,420,000</td><td><button class="file-add">＋ Adjuntar expediente</button></td><td><button class="more">•••</button></td></tr>
-          </tbody></table></div>
-        </div>
-      </section>
-
-      <!-- =====================================================
-           NUEVO REGISTRO
-           ===================================================== -->
-      <section class="section" id="registro">
-        <div class="section-heading"><div><span class="eyebrow">Cartera inmobiliaria</span><h1>Nuevo registro</h1><p>Agrega un inmueble con la información necesaria para su posterior venta.</p></div></div>
-        <div class="form-card">
-          <div class="form-grid two">
-            <label>Nombre del inmueble<input placeholder="Ej. Casa Jardines del Lago"></label>
-            <label>Tipo de inmueble<select><option>Casa</option><option>Departamento</option><option>Terreno</option><option>Local comercial</option></select></label>
-            <label>Precio<input type="number" placeholder="$ 0.00"></label>
-            <label>Propietario<input placeholder="Nombre completo"></label>
-            <label>Teléfono del propietario<input placeholder="477 000 0000"></label>
-            <label>Ciudad / municipio<input placeholder="Lagos de Moreno"></label>
-            <label class="full">Dirección<input placeholder="Calle, número, colonia..."></label>
-            <label class="full">Descripción<textarea rows="4" placeholder="Características relevantes del inmueble..."></textarea></label>
-          </div>
-          <div class="form-actions"><span class="helper">Los datos se almacenarán en la cartera de inmuebles.</span><button class="btn btn-primary">Registrar inmueble</button></div>
-        </div>
-      </section>
-
-      <!-- =====================================================
-           AGENDA
-           ===================================================== -->
-      <section class="section" id="agenda">
-        <div class="section-heading"><div><span class="eyebrow">Citas y seguimiento</span><h1>Agenda</h1><p>Consulta, agrega y modifica las citas con clientes.</p></div><button class="btn btn-primary">＋ Nueva cita</button></div>
-        <div class="calendar-layout">
-          <div class="panel calendar">
-            <div class="calendar-head"><button>‹</button><h3>Septiembre 2026</h3><button>›</button></div>
-            <div class="weekdays"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
-            <div class="days">
-              <span class="muted">31</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span>
-              <span>7</span><span class="today">8</span><span>9</span><span>10</span><span>11</span><span>12</span><span>13</span>
-              <span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
-              <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span>27</span>
-              <span>28</span><span>29</span><span>30</span><span class="muted">1</span><span class="muted">2</span><span class="muted">3</span><span class="muted">4</span>
+        <section class="section" id="pagos">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Comprobantes</span>
+              <h1>Pagos</h1>
+              <p>
+                Adjunta el comprobante de transferencia asociado al inmueble
+                vendido.
+              </p>
             </div>
           </div>
-          <div class="panel appointments">
-            <div class="panel-header"><div><span class="eyebrow">Hoy</span><h3>09 de septiembre</h3></div></div>
-            <div class="appointment"><time>10:00</time><div><strong>Visita · Casa Jardines</strong><small>María López · Cliente</small></div><span class="badge badge-teal">Confirmada</span></div>
-            <div class="appointment"><time>13:30</time><div><strong>Presentación · Local Paseo Real</strong><small>Carlos Ramírez · Cliente</small></div><span class="badge badge-gold">Pendiente</span></div>
-            <div class="appointment"><time>17:00</time><div><strong>Llamada · Residencia Encinos</strong><small>Ana Torres · Cliente</small></div><span class="badge badge-aqua">Seguimiento</span></div>
+          <div class="form-card">
+            <div class="form-title">
+              <span class="number">01</span>
+              <div>
+                <h3>Registrar comprobante</h3>
+                <p>
+                  Selecciona el inmueble desde la agenda y adjunta el archivo
+                  PNG.
+                </p>
+              </div>
+            </div>
+            <div class="form-grid two">
+              <label
+                >Inmueble<select>
+                  <option>Casa Jardines del Lago</option>
+                  <option>Residencia Los Encinos</option>
+                  <option>Local Paseo Real</option>
+                </select></label
+              >
+              <label>Fecha de transferencia<input type="date" /></label>
+            </div>
+            <label
+              >Comprobante de transferencia
+              <div class="upload">
+                <span>↑</span>
+                <div>
+                  <strong>Arrastra tu comprobante aquí</strong
+                  ><small>o haz clic para seleccionar un archivo .png</small>
+                </div>
+                <button class="btn btn-secondary" type="button">
+                  Seleccionar
+                </button>
+              </div>
+            </label>
+            <div class="form-actions">
+              <span class="helper"
+                >La validación de la transferencia corresponde al cliente; el
+                sistema registra y almacena el comprobante.</span
+              ><button class="btn btn-primary">Guardar comprobante</button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- =====================================================
+        <!-- =====================================================
+           HISTORIAL Y EXPEDIENTES
+           ===================================================== -->
+        <section class="section" id="historial">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Registro de ventas</span>
+              <h1>Histórico y expedientes</h1>
+              <p>
+                Consulta las ventas realizadas y resguarda el expediente digital
+                correspondiente.
+              </p>
+            </div>
+            <button class="btn btn-secondary">Exportar</button>
+          </div>
+          <div class="panel table-panel">
+            <div class="table-toolbar">
+              <input
+                class="search"
+                placeholder="Buscar cliente o inmueble..."
+              /><span class="table-count">3 ventas registradas</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Cliente</th>
+                    <th>Inmueble</th>
+                    <th>Fecha</th>
+                    <th>Monto</th>
+                    <th>Expediente</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>María López</strong><small>Cliente</small></td>
+                    <td>Casa Jardines</td>
+                    <td>06/09/2026</td>
+                    <td>$2,850,000</td>
+                    <td><span class="file-ok">✓ Expediente.pdf</span></td>
+                    <td><button class="more">•••</button></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Carlos Ramírez</strong><small>Cliente</small>
+                    </td>
+                    <td>Local Paseo Real</td>
+                    <td>02/09/2026</td>
+                    <td>$1,980,000</td>
+                    <td><span class="file-ok">✓ Expediente.pdf</span></td>
+                    <td><button class="more">•••</button></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Ana Torres</strong><small>Cliente</small></td>
+                    <td>Residencia Encinos</td>
+                    <td>28/08/2026</td>
+                    <td>$3,420,000</td>
+                    <td>
+                      <button class="file-add">＋ Adjuntar expediente</button>
+                    </td>
+                    <td><button class="more">•••</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================
+           NUEVO REGISTRO
+           ===================================================== -->
+        <section class="section" id="registro">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Cartera inmobiliaria</span>
+              <h1>Nuevo registro</h1>
+              <p>
+                Agrega un inmueble con la información necesaria para su
+                posterior venta.
+              </p>
+            </div>
+          </div>
+          <div class="form-card">
+            <div class="form-grid two">
+              <label
+                >Nombre del inmueble<input
+                  placeholder="Ej. Casa Jardines del Lago"
+              /></label>
+              <label
+                >Tipo de inmueble<select>
+                  <option>Casa</option>
+                  <option>Departamento</option>
+                  <option>Terreno</option>
+                  <option>Local comercial</option>
+                </select></label
+              >
+              <label>Precio<input type="number" placeholder="$ 0.00" /></label>
+              <label>Propietario<input placeholder="Nombre completo" /></label>
+              <label
+                >Teléfono del propietario<input placeholder="477 000 0000"
+              /></label>
+              <label
+                >Ciudad / municipio<input placeholder="Lagos de Moreno"
+              /></label>
+              <label class="full"
+                >Dirección<input placeholder="Calle, número, colonia..."
+              /></label>
+              <label class="full"
+                >Descripción<textarea
+                  rows="4"
+                  placeholder="Características relevantes del inmueble..."
+                ></textarea>
+              </label>
+            </div>
+            <div class="form-actions">
+              <span class="helper"
+                >Los datos se almacenarán en la cartera de inmuebles.</span
+              ><button class="btn btn-primary">Registrar inmueble</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================
+           AGENDA
+           ===================================================== -->
+        <section class="section" id="agenda">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Citas y seguimiento</span>
+              <h1>Agenda</h1>
+              <p>Consulta, agrega y modifica las citas con clientes.</p>
+            </div>
+            <button class="btn btn-primary">＋ Nueva cita</button>
+          </div>
+          <div class="calendar-layout">
+            <div class="panel calendar">
+              <div class="calendar-head">
+                <button>‹</button>
+                <h3>Septiembre 2026</h3>
+                <button>›</button>
+              </div>
+              <div class="weekdays">
+                <span>L</span><span>M</span><span>M</span><span>J</span
+                ><span>V</span><span>S</span><span>D</span>
+              </div>
+              <div class="days">
+                <span class="muted">31</span><span>1</span><span>2</span
+                ><span>3</span><span>4</span><span>5</span><span>6</span>
+                <span>7</span><span class="today">8</span><span>9</span
+                ><span>10</span><span>11</span><span>12</span><span>13</span>
+                <span>14</span><span>15</span><span>16</span><span>17</span
+                ><span>18</span><span>19</span><span>20</span> <span>21</span
+                ><span>22</span><span>23</span><span>24</span><span>25</span
+                ><span>26</span><span>27</span> <span>28</span><span>29</span
+                ><span>30</span><span class="muted">1</span
+                ><span class="muted">2</span><span class="muted">3</span
+                ><span class="muted">4</span>
+              </div>
+            </div>
+            <div class="panel appointments">
+              <div class="panel-header">
+                <div>
+                  <span class="eyebrow">Hoy</span>
+                  <h3>09 de septiembre</h3>
+                </div>
+              </div>
+              <div class="appointment">
+                <time>10:00</time>
+                <div>
+                  <strong>Visita · Casa Jardines</strong
+                  ><small>María López · Cliente</small>
+                </div>
+                <span class="badge badge-teal">Confirmada</span>
+              </div>
+              <div class="appointment">
+                <time>13:30</time>
+                <div>
+                  <strong>Presentación · Local Paseo Real</strong
+                  ><small>Carlos Ramírez · Cliente</small>
+                </div>
+                <span class="badge badge-gold">Pendiente</span>
+              </div>
+              <div class="appointment">
+                <time>17:00</time>
+                <div>
+                  <strong>Llamada · Residencia Encinos</strong
+                  ><small>Ana Torres · Cliente</small>
+                </div>
+                <span class="badge badge-aqua">Seguimiento</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- =====================================================
            ESTATUS
            ===================================================== -->
-      <section class="section" id="estatus">
-        <div class="section-heading"><div><span class="eyebrow">Clasificación de cartera</span><h1>Estatus del inmueble</h1><p>Consulta rápidamente si una propiedad está disponible, pendiente, vendida o cancelada.</p></div></div>
-        <div class="status-cards">
-          <div class="status-summary available"><strong>18</strong><span>Disponibles</span></div>
-          <div class="status-summary pending"><strong>7</strong><span>Pendientes</span></div>
-          <div class="status-summary sold"><strong>12</strong><span>Vendidos</span></div>
-          <div class="status-summary cancelled"><strong>2</strong><span>Cancelados</span></div>
-        </div>
-        <div class="panel table-panel"><div class="table-toolbar"><input class="search" placeholder="Buscar inmueble..."><select class="small-select"><option>Todos los tipos</option><option>Casa</option><option>Departamento</option><option>Terreno</option></select></div>
-          <div class="table-wrap"><table><thead><tr><th>Inmueble</th><th>Tipo</th><th>Ubicación</th><th>Precio</th><th>Estatus</th></tr></thead>
-          <tbody>
-            <tr><td><strong>Casa Jardines del Lago</strong></td><td>Casa</td><td>Lagos de Moreno</td><td>$2,850,000</td><td><span class="status-pill available">Disponible</span></td></tr>
-            <tr><td><strong>Residencia Los Encinos</strong></td><td>Casa</td><td>Centro</td><td>$3,420,000</td><td><span class="status-pill pending">Pendiente</span></td></tr>
-            <tr><td><strong>Local Paseo Real</strong></td><td>Comercial</td><td>Zona Norte</td><td>$1,980,000</td><td><span class="status-pill sold">Vendido</span></td></tr>
-            <tr><td><strong>Terreno El Mirador</strong></td><td>Terreno</td><td>El Mirador</td><td>$1,250,000</td><td><span class="status-pill cancelled">Cancelado</span></td></tr>
-          </tbody></table></div>
-        </div>
-      </section>
+        <section class="section" id="estatus">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Clasificación de cartera</span>
+              <h1>Estatus del inmueble</h1>
+              <p>
+                Consulta rápidamente si una propiedad está disponible,
+                pendiente, vendida o cancelada.
+              </p>
+            </div>
+          </div>
+          <div class="status-cards">
+            <div class="status-summary available">
+              <strong>18</strong><span>Disponibles</span>
+            </div>
+            <div class="status-summary pending">
+              <strong>7</strong><span>Pendientes</span>
+            </div>
+            <div class="status-summary sold">
+              <strong>12</strong><span>Vendidos</span>
+            </div>
+            <div class="status-summary cancelled">
+              <strong>2</strong><span>Cancelados</span>
+            </div>
+          </div>
+          <div class="panel table-panel">
+            <div class="table-toolbar">
+              <input class="search" placeholder="Buscar inmueble..." /><select
+                class="small-select"
+              >
+                <option>Todos los tipos</option>
+                <option>Casa</option>
+                <option>Departamento</option>
+                <option>Terreno</option>
+              </select>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Inmueble</th>
+                    <th>Tipo</th>
+                    <th>Ubicación</th>
+                    <th>Precio</th>
+                    <th>Estatus</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><strong>Casa Jardines del Lago</strong></td>
+                    <td>Casa</td>
+                    <td>Lagos de Moreno</td>
+                    <td>$2,850,000</td>
+                    <td>
+                      <span class="status-pill available">Disponible</span>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td><strong>Residencia Los Encinos</strong></td>
+                    <td>Casa</td>
+                    <td>Centro</td>
+                    <td>$3,420,000</td>
+                    <td><span class="status-pill pending">Pendiente</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Local Paseo Real</strong></td>
+                    <td>Comercial</td>
+                    <td>Zona Norte</td>
+                    <td>$1,980,000</td>
+                    <td><span class="status-pill sold">Vendido</span></td>
+                  </tr>
+                  <tr>
+                    <td><strong>Terreno El Mirador</strong></td>
+                    <td>Terreno</td>
+                    <td>El Mirador</td>
+                    <td>$1,250,000</td>
+                    <td>
+                      <span class="status-pill cancelled">Cancelado</span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
 
-      <!-- =====================================================
+        <!-- =====================================================
            USUARIOS
            ===================================================== -->
-      <section class="section" id="usuarios">
-        <div class="section-heading"><div><span class="eyebrow">Solo administrador</span><h1>Usuarios</h1><p>Administra las cuentas que pueden ingresar al sistema.</p></div><button class="btn btn-primary">＋ Nuevo usuario</button></div>
-        <div class="user-grid">
-          <article class="user-card"><span class="avatar large">AD</span><div><h3>Administrador</h3><p>administrador@inmobiliaria.mx</p><span class="badge badge-teal">Administrador</span></div><button class="more">•••</button></article>
-          <article class="user-card"><span class="avatar large gold-avatar">AG</span><div><h3>Agente de ventas</h3><p>agente@inmobiliaria.mx</p><span class="badge badge-aqua">Agente</span></div><button class="more">•••</button></article>
-          <article class="user-card"><span class="avatar large aqua-avatar">AS</span><div><h3>Asistente</h3><p>asistente@inmobiliaria.mx</p><span class="badge badge-gold">Asistente</span></div><button class="more">•••</button></article>
-        </div>
-      </section>
+        <section class="section" id="usuarios">
+          <div class="section-heading">
+            <div>
+              <span class="eyebrow">Solo administrador</span>
+              <h1>Usuarios</h1>
+              <p>Administra las cuentas que pueden ingresar al sistema.</p>
+            </div>
+            <button class="btn btn-primary">＋ Nuevo usuario</button>
+          </div>
+          <div class="user-grid">
+            <article class="user-card">
+              <span class="avatar large">AD</span>
+              <div>
+                <h3>Administrador</h3>
+                <p>administrador@inmobiliaria.mx</p>
+                <span class="badge badge-teal">Administrador</span>
+              </div>
+              <button class="more">•••</button>
+            </article>
+            <article class="user-card">
+              <span class="avatar large gold-avatar">AG</span>
+              <div>
+                <h3>Agente de ventas</h3>
+                <p>agente@inmobiliaria.mx</p>
+                <span class="badge badge-aqua">Agente</span>
+              </div>
+              <button class="more">•••</button>
+            </article>
+            <article class="user-card">
+              <span class="avatar large aqua-avatar">AS</span>
+              <div>
+                <h3>Asistente</h3>
+                <p>asistente@inmobiliaria.mx</p>
+                <span class="badge badge-gold">Asistente</span>
+              </div>
+              <button class="more">•••</button>
+            </article>
+          </div>
+        </section>
 
-      <!-- =====================================================
+        <!-- =====================================================
            SOPORTE / FOOTER
            ===================================================== -->
-      <section class="support-banner">
-        <div><span class="eyebrow">Acompañamiento técnico</span><h2>Estamos contigo durante la puesta en marcha</h2><p>Soporte para incidencias, dudas de uso, configuración relacionada con el sistema y seguimiento de solicitudes.</p></div>
-        <div class="support-contact"><strong>474 128 3518</strong><span>Ingenieras3mil@gmail.com</span></div>
-      </section>
+        <section class="support-banner">
+          <div>
+            <span class="eyebrow">Acompañamiento técnico</span>
+            <h2>Estamos contigo durante la puesta en marcha</h2>
+            <p>
+              Soporte para incidencias, dudas de uso, configuración relacionada
+              con el sistema y seguimiento de solicitudes.
+            </p>
+          </div>
+          <div class="support-contact">
+            <strong>474 128 3518</strong><span>Ingenieras3mil@gmail.com</span>
+          </div>
+        </section>
 
-      <footer>
-        <span>InmoGestión · Propuesta de plataforma inmobiliaria</span>
-        <span>Hosting y dominio incluidos inicialmente según propuesta</span>
-      </footer>
-    </main>
-  </div>
-
-</body>
+        <footer>
+          <span>InmoGestión · Propuesta de plataforma inmobiliaria</span>
+          <span>Hosting y dominio incluidos inicialmente según propuesta</span>
+        </footer>
+      </main>
+    </div>
+  </body>
 </html>
