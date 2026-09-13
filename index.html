@@ -11,6 +11,12 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <!-- Leaflet -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      crossorigin=""
+    />
   </head>
   <body>
     <!-- =========================================================
@@ -33,23 +39,25 @@
           <p>Ingresa con el usuario y contraseña previamente registrados.</p>
         </div>
 
-        <form class="form-grid">
+        <form class="form-grid" onsubmit="return false;">
           <label>
             Usuario
-            <input type="text" placeholder="Ej. administrador" />
+            <input type="text" id="usuario" placeholder="Ej. administrador" />
           </label>
           <label>
             Contraseña
-            <input type="password" placeholder="••••••••" />
+            <input type="password" id="contrasena" placeholder="••••••••" />
           </label>
+          <p
+            id="loginError"
+            style="display: none; color: #a96363; font-size: 0.75rem; margin: 0"
+          >
+            Por favor ingresa tu usuario y contraseña.
+          </p>
           <button
             class="btn btn-primary"
             type="button"
-            onclick="
-              document
-                .querySelector('#app')
-                .scrollIntoView({ behavior: 'smooth' })
-            "
+            onclick="iniciarSesion()"
           >
             Ingresar al sistema
           </button>
@@ -112,7 +120,7 @@
           </div>
 
           <!-- ===================================================
-               ACCIONES SUPERIORES (NOTIFICACIONES + USUARIO)
+               ACCIONES SUPERIORES (NOTIFICACIONES VALERIA + USUARIO)
                =================================================== -->
           <div class="top-actions">
             <!-- Módulo de Notificaciones simulado (HTML/CSS) -->
@@ -204,7 +212,7 @@
           <div class="stats-grid">
             <article class="stat-card">
               <span class="stat-label">Meta mensual</span>
-              <strong>$450,000</strong>
+              <strong id="metaMensualTexto">$450,000</strong>
               <span class="stat-note positive"
                 >↑ 12.4% respecto al mes anterior</span
               >
@@ -212,11 +220,13 @@
             <article class="stat-card">
               <span class="stat-label">Ganancias actuales</span>
               <strong>$327,500</strong>
-              <span class="stat-note positive">72.8% de la meta</span>
+              <span class="stat-note positive" id="porcentajeMetaNota"
+                >72.8% de la meta</span
+              >
             </article>
             <article class="stat-card">
               <span class="stat-label">Faltante para la meta</span>
-              <strong>$122,500</strong>
+              <strong id="faltanteMetaTexto">$122,500</strong>
               <span class="stat-note">Objetivo pendiente</span>
             </article>
             <article class="stat-card accent">
@@ -233,11 +243,11 @@
                   <span class="eyebrow">Progreso</span>
                   <h3>Dinero faltante para la meta</h3>
                 </div>
-                <span class="badge badge-aqua">72.8%</span>
+                <span class="badge badge-aqua" id="porcentajeBadge">72.8%</span>
               </div>
-              <div class="progress-ring">
+              <div class="progress-ring" id="progressRing">
                 <div class="ring-center">
-                  <strong>72.8%</strong>
+                  <strong id="porcentajeRing">72.8%</strong>
                   <small>alcanzado</small>
                 </div>
               </div>
@@ -248,7 +258,7 @@
                 </div>
                 <div>
                   <span class="dot sand"></span> Faltante
-                  <strong>$122,500</strong>
+                  <strong id="faltanteGoalFooter">$122,500</strong>
                 </div>
               </div>
             </article>
@@ -599,90 +609,217 @@
         </section>
 
         <!-- =====================================================
-           ESTATUS
+           ESTATUS DEL INMUEBLE (MAPA Y TARJETAS DE KASSANDRA)
            ===================================================== -->
         <section class="section" id="estatus">
-          <div class="section-heading">
-            <div>
-              <span class="eyebrow">Clasificación de cartera</span>
-              <h1>Estatus del inmueble</h1>
-              <p>
-                Consulta rápidamente si una propiedad está disponible,
-                pendiente, vendida o cancelada.
-              </p>
-            </div>
-          </div>
-          <div class="status-cards">
-            <div class="status-summary available">
-              <strong>18</strong><span>Disponibles</span>
-            </div>
-            <div class="status-summary pending">
-              <strong>7</strong><span>Pendientes</span>
-            </div>
-            <div class="status-summary sold">
-              <strong>12</strong><span>Vendidos</span>
-            </div>
-            <div class="status-summary cancelled">
-              <strong>2</strong><span>Cancelados</span>
-            </div>
-          </div>
-          <div class="panel table-panel">
-            <div class="table-toolbar">
-              <input class="search" placeholder="Buscar inmueble..." /><select
-                class="small-select"
-              >
-                <option>Todos los tipos</option>
-                <option>Casa</option>
-                <option>Departamento</option>
-                <option>Terreno</option>
-              </select>
-            </div>
-            <div class="table-wrap">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Inmueble</th>
-                    <th>Tipo</th>
-                    <th>Ubicación</th>
-                    <th>Precio</th>
-                    <th>Estatus</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>Casa Jardines del Lago</strong></td>
-                    <td>Casa</td>
-                    <td>Lagos de Moreno</td>
-                    <td>$2,850,000</td>
-                    <td>
-                      <span class="status-pill available">Disponible</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td><strong>Residencia Los Encinos</strong></td>
-                    <td>Casa</td>
-                    <td>Centro</td>
-                    <td>$3,420,000</td>
-                    <td><span class="status-pill pending">Pendiente</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Local Paseo Real</strong></td>
-                    <td>Comercial</td>
-                    <td>Zona Norte</td>
-                    <td>$1,980,000</td>
-                    <td><span class="status-pill sold">Vendido</span></td>
-                  </tr>
-                  <tr>
-                    <td><strong>Terreno El Mirador</strong></td>
-                    <td>Terreno</td>
-                    <td>El Mirador</td>
-                    <td>$1,250,000</td>
-                    <td>
-                      <span class="status-pill cancelled">Cancelado</span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
+          <div class="view" id="view-estatus">
+            <div class="estatus-section">
+              <!-- ENCABEZADO -->
+              <div class="estatus-toolbar">
+                <div>
+                  <h2 class="estatus-title">Inmuebles registrados</h2>
+                  <p class="estatus-description">
+                    Consulta su estatus en tarjetas o ubícalos en el mapa
+                  </p>
+                </div>
+
+                <!-- SELECTOR -->
+                <div class="estatus-toggle">
+                  <button
+                    class="active"
+                    onclick="toggleEstatusView('grid', this)"
+                  >
+                    Tarjetas
+                  </button>
+                  <button onclick="toggleEstatusView('map', this)">Mapa</button>
+                </div>
+              </div>
+
+              <!-- MAPA -->
+              <div id="estatus-map-wrap" class="estatus-map-container">
+                <div class="estatus-map-card">
+                  <div id="map-estatus" class="estatus-map"></div>
+
+                  <!-- LEYENDA -->
+                  <div class="estatus-map-legend">
+                    <span>
+                      <span
+                        class="legend-dot"
+                        style="background: #a58d69"
+                      ></span>
+                      Vendido
+                    </span>
+                    <span>
+                      <span
+                        class="legend-dot"
+                        style="background: #427d8d"
+                      ></span>
+                      Pendiente
+                    </span>
+                    <span>
+                      <span
+                        class="legend-dot"
+                        style="background: #155356"
+                      ></span>
+                      Disponible
+                    </span>
+                    <span>
+                      <span
+                        class="legend-dot"
+                        style="background: #b4573f"
+                      ></span>
+                      Cancelada
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- TARJETAS -->
+              <div id="estatus-grid-wrap" class="estatus-grid">
+                <!-- 1. VENDIDO -->
+                <div class="estatus-property-card">
+                  <div class="estatus-property-image">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    >
+                      <path d="M3 11l9-7 9 7" />
+                      <path d="M5 9v11h14V9" />
+                      <path d="M9 20v-6h6v6" />
+                    </svg>
+                  </div>
+                  <div class="estatus-property-body">
+                    <h4>Casa · Los Álamos 12</h4>
+                    <p>Residencial · 3 recámaras</p>
+                    <span class="estatus-status vendido">
+                      <span class="estatus-status-dot"></span>
+                      Vendido
+                    </span>
+                  </div>
+                </div>
+
+                <!-- 2. PENDIENTE -->
+                <div class="estatus-property-card">
+                  <div class="estatus-property-image">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    >
+                      <path d="M3 11l9-7 9 7" />
+                      <path d="M5 9v11h14V9" />
+                      <path d="M9 20v-6h6v6" />
+                    </svg>
+                  </div>
+                  <div class="estatus-property-body">
+                    <h4>Depto. Vista Real 302</h4>
+                    <p>Residencial · 2 recámaras</p>
+                    <span class="estatus-status pendiente">
+                      <span class="estatus-status-dot"></span>
+                      Pendiente
+                    </span>
+                  </div>
+                </div>
+
+                <!-- 3. DISPONIBLE -->
+                <div class="estatus-property-card">
+                  <div class="estatus-property-image">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    >
+                      <path d="M3 11l9-7 9 7" />
+                      <path d="M5 9v11h14V9" />
+                      <path d="M9 20v-6h6v6" />
+                    </svg>
+                  </div>
+                  <div class="estatus-property-body">
+                    <h4>Terreno Camino a la Presa</h4>
+                    <p>Terreno comercial</p>
+                    <span class="estatus-status disponible">
+                      <span class="estatus-status-dot"></span>
+                      Disponible
+                    </span>
+                  </div>
+                </div>
+
+                <!-- 4. CANCELADA -->
+                <div class="estatus-property-card">
+                  <div class="estatus-property-image">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    >
+                      <path d="M3 11l9-7 9 7" />
+                      <path d="M5 9v11h14V9" />
+                      <path d="M9 20v-6h6v6" />
+                    </svg>
+                  </div>
+                  <div class="estatus-property-body">
+                    <h4>Depto. Norte 4B</h4>
+                    <p>Residencial · 1 recámara</p>
+                    <span class="estatus-status cancelada">
+                      <span class="estatus-status-dot"></span>
+                      Cancelada
+                    </span>
+                  </div>
+                </div>
+
+                <!-- 5. DISPONIBLE -->
+                <div class="estatus-property-card">
+                  <div class="estatus-property-image">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    >
+                      <path d="M3 11l9-7 9 7" />
+                      <path d="M5 9v11h14V9" />
+                      <path d="M9 20v-6h6v6" />
+                    </svg>
+                  </div>
+                  <div class="estatus-property-body">
+                    <h4>Casa · Real del Bosque</h4>
+                    <p>Residencial · 4 recámaras</p>
+                    <span class="estatus-status disponible">
+                      <span class="estatus-status-dot"></span>
+                      Disponible
+                    </span>
+                  </div>
+                </div>
+
+                <!-- 6. DISPONIBLE -->
+                <div class="estatus-property-card">
+                  <div class="estatus-property-image">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                    >
+                      <path d="M3 11l9-7 9 7" />
+                      <path d="M5 9v11h14V9" />
+                      <path d="M9 20v-6h6v6" />
+                    </svg>
+                  </div>
+                  <div class="estatus-property-body">
+                    <h4>Local · Av. Principal 88</h4>
+                    <p>Comercial</p>
+                    <span class="estatus-status disponible">
+                      <span class="estatus-status-dot"></span>
+                      Disponible
+                    </span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -753,5 +890,232 @@
         </footer>
       </main>
     </div>
+
+    <!-- =========================================================
+       MODAL DE AVISO DE META MENSUAL (EDITABLE)
+       ========================================================= -->
+    <div class="modal-overlay" id="goalModal">
+      <div class="modal-box">
+        <span class="eyebrow">Aviso de meta mensual</span>
+        <h3>Vas por buen camino 🎯</h3>
+        <p id="goalModalTexto">
+          Llevas <strong>$327,500</strong> de tu meta de
+          <strong>$450,000</strong>.<br />
+          Te faltan <strong>$122,500</strong> para alcanzarla.
+        </p>
+
+        <label
+          style="text-align: left; display: grid; gap: 7px; margin-bottom: 20px"
+        >
+          Editar meta mensual
+          <input type="number" id="inputMeta" value="450000" step="1000" />
+        </label>
+
+        <div style="display: flex; gap: 10px; justify-content: center">
+          <button
+            class="btn btn-secondary"
+            type="button"
+            onclick="
+              document.getElementById('goalModal').classList.remove('active')
+            "
+          >
+            Cerrar
+          </button>
+          <button
+            class="btn btn-primary"
+            type="button"
+            onclick="actualizarMeta()"
+          >
+            Guardar meta
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =====================================================
+         LIBRERÍAS Y SCRIPTS DEL SISTEMA
+         ===================================================== -->
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      crossorigin=""
+    ></script>
+
+    <script>
+      const GANANCIAS_ACTUALES = 327500;
+
+      document.addEventListener("DOMContentLoaded", () => {
+        document.getElementById("app").style.display = "none";
+      });
+
+      function iniciarSesion() {
+        const usuario = document.getElementById("usuario").value.trim();
+        const contrasena = document.getElementById("contrasena").value.trim();
+        const error = document.getElementById("loginError");
+
+        if (usuario === "" || contrasena === "") {
+          error.style.display = "block";
+          return;
+        }
+
+        error.style.display = "none";
+        document.getElementById("login").style.display = "none";
+        document.getElementById("app").style.display = "flex";
+        window.scrollTo(0, 0);
+
+        document.getElementById("goalModal").classList.add("active");
+      }
+
+      function formatoDinero(num) {
+        return "$" + Math.round(num).toLocaleString("es-MX");
+      }
+
+      function actualizarMeta() {
+        const nuevaMeta = parseFloat(
+          document.getElementById("inputMeta").value,
+        );
+
+        if (isNaN(nuevaMeta) || nuevaMeta <= 0) {
+          alert("Ingresa un monto de meta válido.");
+          return;
+        }
+
+        let faltante = nuevaMeta - GANANCIAS_ACTUALES;
+        let porcentaje = (GANANCIAS_ACTUALES / nuevaMeta) * 100;
+        if (faltante < 0) faltante = 0;
+        if (porcentaje > 100) porcentaje = 100;
+        const porcentajeTexto = porcentaje.toFixed(1) + "%";
+
+        document.getElementById("metaMensualTexto").textContent =
+          formatoDinero(nuevaMeta);
+        document.getElementById("faltanteMetaTexto").textContent =
+          formatoDinero(faltante);
+        document.getElementById("porcentajeMetaNota").textContent =
+          porcentajeTexto + " de la meta";
+
+        document.getElementById("porcentajeBadge").textContent =
+          porcentajeTexto;
+        document.getElementById("porcentajeRing").textContent = porcentajeTexto;
+        document.getElementById("faltanteGoalFooter").textContent =
+          formatoDinero(faltante);
+        document.getElementById("progressRing").style.background =
+          `conic-gradient(var(--teal) 0 ${porcentaje}%, var(--sand) ${porcentaje}% 100%)`;
+
+        document.getElementById("goalModalTexto").innerHTML =
+          `Llevas <strong>${formatoDinero(GANANCIAS_ACTUALES)}</strong> de tu meta de <strong>${formatoDinero(nuevaMeta)}</strong>.<br>
+         Te faltan <strong>${formatoDinero(faltante)}</strong> para alcanzarla.`;
+
+        document.getElementById("goalModal").classList.remove("active");
+      }
+
+      /* MAPA ESTATUS */
+      let mapEstatus = null;
+
+      function inicializarMapaEstatus() {
+        if (mapEstatus !== null) return;
+
+        mapEstatus = L.map("map-estatus").setView([21.357, -101.929], 13);
+
+        L.tileLayer(
+          "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+          {
+            maxZoom: 19,
+            attribution: "&copy; OpenStreetMap contributors &copy; CARTO",
+          },
+        ).addTo(mapEstatus);
+
+        function agregarMarcador(lat, lng, nombre, tipo, estado, color) {
+          const marcador = L.circleMarker([lat, lng], {
+            radius: 9,
+            fillColor: color,
+            color: "#ffffff",
+            weight: 2,
+            opacity: 1,
+            fillOpacity: 0.9,
+          }).addTo(mapEstatus);
+
+          marcador.bindPopup(`
+            <div style="min-width:190px;">
+                <strong>${nombre}</strong><br>
+                <span style="color:#427D8D;font-size:12px;">${tipo}</span><br><br>
+                <span style="display:inline-flex;align-items:center;gap:6px;font-weight:600;color:${color};">
+                    <span style="width:8px;height:8px;background:${color};border-radius:50%;display:inline-block;"></span>
+                    ${estado}
+                </span>
+            </div>
+        `);
+        }
+
+        agregarMarcador(
+          21.3605,
+          -101.934,
+          "Casa · Los Álamos 12",
+          "Residencial · 3 recámaras",
+          "Vendido",
+          "#A58D69",
+        );
+        agregarMarcador(
+          21.354,
+          -101.925,
+          "Depto. Vista Real 302",
+          "Residencial · 2 recámaras",
+          "Pendiente",
+          "#427D8D",
+        );
+        agregarMarcador(
+          21.35,
+          -101.938,
+          "Terreno Camino a la Presa",
+          "Terreno comercial",
+          "Disponible",
+          "#155356",
+        );
+        agregarMarcador(
+          21.363,
+          -101.92,
+          "Depto. Norte 4B",
+          "Residencial · 1 recámara",
+          "Cancelada",
+          "#B4573F",
+        );
+        agregarMarcador(
+          21.345,
+          -101.915,
+          "Casa · Real del Bosque",
+          "Residencial · 4 recámaras",
+          "Disponible",
+          "#155356",
+        );
+        agregarMarcador(
+          21.367,
+          -101.942,
+          "Local · Av. Principal 88",
+          "Comercial",
+          "Disponible",
+          "#155356",
+        );
+      }
+
+      function toggleEstatusView(mode, btn) {
+        document
+          .querySelectorAll(".estatus-toggle button")
+          .forEach((button) => {
+            button.classList.remove("active");
+          });
+
+        btn.classList.add("active");
+
+        document.getElementById("estatus-grid-wrap").style.display =
+          mode === "grid" ? "grid" : "none";
+        document.getElementById("estatus-map-wrap").style.display =
+          mode === "map" ? "block" : "none";
+
+        if (mode === "map") {
+          inicializarMapaEstatus();
+          setTimeout(() => {
+            if (mapEstatus) mapEstatus.invalidateSize();
+          }, 150);
+        }
+      }
+    </script>
   </body>
 </html>
