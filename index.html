@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="es">
+<<<<<<< Updated upstream
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -58,10 +59,100 @@
           </button>
         </form>
         <!-- FIN MODIFICADO -->
+=======
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InmoGestión | Plataforma inmobiliaria</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+<!-- Leaflet -->
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+  crossorigin=""
+>
+
+</head>
+<body>
+
+<!-- =========================================================
+     LOGIN
+     ========================================================= -->
+<section class="login-screen" id="login-screen">
+
+  <div class="login-decoration"></div>
+
+  <div class="login-card">
+
+    <div class="brand brand-center">
+
+      <span class="brand-mark">IG</span>
+
+      <div>
+        <strong>InmoGestión</strong>
+        <small>Gestión integral de inmuebles</small>
+>>>>>>> Stashed changes
       </div>
     </section>
 
+<<<<<<< Updated upstream
     <!-- =========================================================
+=======
+    </div>
+
+    <div class="login-heading">
+
+      <span class="eyebrow">Acceso seguro</span>
+
+      <h1>Bienvenido</h1>
+
+      <p>
+        Ingresa con el usuario y contraseña previamente registrados.
+      </p>
+
+    </div>
+
+    <form class="form-grid" onsubmit="return false;">
+
+      <label>
+        Usuario
+
+        <input
+          type="text"
+          id="usuario"
+          placeholder="Ej. administrador"
+        >
+      </label>
+
+      <label>
+        Contraseña
+
+        <input
+          type="password"
+          id="contrasena"
+          placeholder="••••••••"
+        >
+      </label>
+
+      <button
+        class="btn btn-primary"
+        type="button"
+        onclick="enter()"
+      >
+        Ingresar al sistema
+      </button>
+
+    </form>
+
+  </div>
+
+</section>
+
+  <!-- =========================================================
+>>>>>>> Stashed changes
        APPLICATION SHELL
        ========================================================= -->
     <div class="app" id="app">
@@ -548,6 +639,7 @@
         <!-- =====================================================
            ESTATUS
            ===================================================== -->
+<<<<<<< Updated upstream
         <section class="section" id="estatus">
           <div class="section-heading">
             <div>
@@ -633,6 +725,380 @@
             </div>
           </div>
         </section>
+=======
+      <section class="section" id="estatus">
+        <!-- =====================================================
+     ESTATUS DEL INMUEBLE
+     ===================================================== -->
+
+<div class="view" id="view-estatus">
+
+    <div class="estatus-section">
+
+        <!-- ENCABEZADO -->
+        <div class="estatus-toolbar">
+
+            <div>
+                <h2 class="estatus-title">
+                    Inmuebles registrados
+                </h2>
+
+                <p class="estatus-description">
+                    Consulta su estatus en tarjetas o ubícalos en el mapa
+                </p>
+            </div>
+
+            <!-- SELECTOR -->
+            <div class="estatus-toggle">
+
+                <button
+                    class="active"
+                    onclick="toggleEstatusView('grid', this)">
+                    Tarjetas
+                </button>
+
+                <button
+                    onclick="toggleEstatusView('map', this)">
+                    Mapa
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             MAPA
+             ================================================= -->
+
+        <div
+            id="estatus-map-wrap"
+            class="estatus-map-container">
+
+            <div class="estatus-map-card">
+
+                <div
+                    id="map-estatus"
+                    class="estatus-map">
+                </div>
+
+
+                <!-- LEYENDA -->
+
+                <div class="estatus-map-legend">
+
+                    <span>
+                        <span
+                            class="legend-dot"
+                            style="background:#A58D69;">
+                        </span>
+                        Vendido
+                    </span>
+
+                    <span>
+                        <span
+                            class="legend-dot"
+                            style="background:#427D8D;">
+                        </span>
+                        Pendiente
+                    </span>
+
+                    <span>
+                        <span
+                            class="legend-dot"
+                            style="background:#155356;">
+                        </span>
+                        Disponible
+                    </span>
+
+                    <span>
+                        <span
+                            class="legend-dot"
+                            style="background:#B4573F;">
+                        </span>
+                        Cancelada
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =================================================
+             TARJETAS
+             ================================================= -->
+
+        <div
+            id="estatus-grid-wrap"
+            class="estatus-grid">
+
+
+            <!-- 1. VENDIDO -->
+
+            <div class="estatus-property-card">
+
+                <div class="estatus-property-image">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5">
+
+                        <path d="M3 11l9-7 9 7"/>
+                        <path d="M5 9v11h14V9"/>
+                        <path d="M9 20v-6h6v6"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="estatus-property-body">
+
+                    <h4>
+                        Casa · Los Álamos 12
+                    </h4>
+
+                    <p>
+                        Residencial · 3 recámaras
+                    </p>
+
+                    <span class="estatus-status vendido">
+
+                        <span class="estatus-status-dot"></span>
+
+                        Vendido
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- 2. PENDIENTE -->
+
+            <div class="estatus-property-card">
+
+                <div class="estatus-property-image">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5">
+
+                        <path d="M3 11l9-7 9 7"/>
+                        <path d="M5 9v11h14V9"/>
+                        <path d="M9 20v-6h6v6"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="estatus-property-body">
+
+                    <h4>
+                        Depto. Vista Real 302
+                    </h4>
+
+                    <p>
+                        Residencial · 2 recámaras
+                    </p>
+
+                    <span class="estatus-status pendiente">
+
+                        <span class="estatus-status-dot"></span>
+
+                        Pendiente
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- 3. DISPONIBLE -->
+
+            <div class="estatus-property-card">
+
+                <div class="estatus-property-image">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5">
+
+                        <path d="M3 11l9-7 9 7"/>
+                        <path d="M5 9v11h14V9"/>
+                        <path d="M9 20v-6h6v6"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="estatus-property-body">
+
+                    <h4>
+                        Terreno Camino a la Presa
+                    </h4>
+
+                    <p>
+                        Terreno comercial
+                    </p>
+
+                    <span class="estatus-status disponible">
+
+                        <span class="estatus-status-dot"></span>
+
+                        Disponible
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- 4. CANCELADA -->
+
+            <div class="estatus-property-card">
+
+                <div class="estatus-property-image">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5">
+
+                        <path d="M3 11l9-7 9 7"/>
+                        <path d="M5 9v11h14V9"/>
+                        <path d="M9 20v-6h6v6"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="estatus-property-body">
+
+                    <h4>
+                        Depto. Norte 4B
+                    </h4>
+
+                    <p>
+                        Residencial · 1 recámara
+                    </p>
+
+                    <span class="estatus-status cancelada">
+
+                        <span class="estatus-status-dot"></span>
+
+                        Cancelada
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- 5. DISPONIBLE -->
+
+            <div class="estatus-property-card">
+
+                <div class="estatus-property-image">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5">
+
+                        <path d="M3 11l9-7 9 7"/>
+                        <path d="M5 9v11h14V9"/>
+                        <path d="M9 20v-6h6v6"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="estatus-property-body">
+
+                    <h4>
+                        Casa · Real del Bosque
+                    </h4>
+
+                    <p>
+                        Residencial · 4 recámaras
+                    </p>
+
+                    <span class="estatus-status disponible">
+
+                        <span class="estatus-status-dot"></span>
+
+                        Disponible
+
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- 6. DISPONIBLE -->
+
+            <div class="estatus-property-card">
+
+                <div class="estatus-property-image">
+
+                    <svg
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1.5">
+
+                        <path d="M3 11l9-7 9 7"/>
+                        <path d="M5 9v11h14V9"/>
+                        <path d="M9 20v-6h6v6"/>
+
+                    </svg>
+
+                </div>
+
+                <div class="estatus-property-body">
+
+                    <h4>
+                        Local · Av. Principal 88
+                    </h4>
+
+                    <p>
+                        Comercial
+                    </p>
+
+                    <span class="estatus-status disponible">
+
+                        <span class="estatus-status-dot"></span>
+
+                        Disponible
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+   </section>
+>>>>>>> Stashed changes
 
         <!-- =====================================================
            USUARIOS
@@ -701,6 +1167,7 @@
       </main>
     </div>
 
+<<<<<<< Updated upstream
     <!-- =========================================================
        NUEVO: MODAL DE AVISO DE META MENSUAL (EDITABLE)
        ========================================================= -->
@@ -816,4 +1283,241 @@
       }
     </script>
   </body>
+=======
+
+  <!-- =====================================================
+          JavaScript
+           ===================================================== -->
+<script
+  src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+  crossorigin="">
+</script>
+
+<!-- =====================================================
+     JAVASCRIPT DEL SISTEMA
+     ===================================================== -->
+
+<script>
+
+let mapEstatus = null;
+
+
+/* =====================================================
+   INICIALIZAR MAPA
+   ===================================================== */
+
+function inicializarMapaEstatus() {
+
+    // Evitar crear el mapa más de una vez
+    if (mapEstatus !== null) {
+        return;
+    }
+
+    mapEstatus = L.map('map-estatus').setView(
+        [21.3570, -101.9290],
+        13
+    );
+
+
+    /* =================================================
+       MAPA OPENSTREETMAP
+       ================================================= */
+
+L.tileLayer(
+    'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
+    {
+        maxZoom: 19,
+        attribution: '&copy; OpenStreetMap contributors &copy; CARTO'
+    }
+).addTo(mapEstatus);
+
+    /* =================================================
+       FUNCIÓN PARA AGREGAR MARCADORES
+       ================================================= */
+
+    function agregarMarcador(
+        lat,
+        lng,
+        nombre,
+        tipo,
+        estado,
+        color
+    ) {
+
+        const marcador = L.circleMarker(
+            [lat, lng],
+            {
+                radius: 9,
+                fillColor: color,
+                color: '#ffffff',
+                weight: 2,
+                opacity: 1,
+                fillOpacity: 0.9
+            }
+        ).addTo(mapEstatus);
+
+
+        marcador.bindPopup(`
+            <div style="min-width:190px;">
+
+                <strong>${nombre}</strong>
+
+                <br>
+
+                <span style="
+                    color:#427D8D;
+                    font-size:12px;
+                ">
+                    ${tipo}
+                </span>
+
+                <br><br>
+
+                <span style="
+                    display:inline-flex;
+                    align-items:center;
+                    gap:6px;
+                    font-weight:600;
+                    color:${color};
+                ">
+
+                    <span style="
+                        width:8px;
+                        height:8px;
+                        background:${color};
+                        border-radius:50%;
+                        display:inline-block;
+                    "></span>
+
+                    ${estado}
+
+                </span>
+
+            </div>
+        `);
+    }
+
+
+    /* =================================================
+       INMUEBLES
+       ================================================= */
+
+    agregarMarcador(
+        21.3605,
+        -101.9340,
+        'Casa · Los Álamos 12',
+        'Residencial · 3 recámaras',
+        'Vendido',
+        '#A58D69'
+    );
+
+    agregarMarcador(
+        21.3540,
+        -101.9250,
+        'Depto. Vista Real 302',
+        'Residencial · 2 recámaras',
+        'Pendiente',
+        '#427D8D'
+    );
+
+    agregarMarcador(
+        21.3500,
+        -101.9380,
+        'Terreno Camino a la Presa',
+        'Terreno comercial',
+        'Disponible',
+        '#155356'
+    );
+
+    agregarMarcador(
+        21.3630,
+        -101.9200,
+        'Depto. Norte 4B',
+        'Residencial · 1 recámara',
+        'Cancelada',
+        '#B4573F'
+    );
+
+    agregarMarcador(
+        21.3450,
+        -101.9150,
+        'Casa · Real del Bosque',
+        'Residencial · 4 recámaras',
+        'Disponible',
+        '#155356'
+    );
+
+    agregarMarcador(
+        21.3670,
+        -101.9420,
+        'Local · Av. Principal 88',
+        'Comercial',
+        'Disponible',
+        '#155356'
+    );
+
+}
+
+
+/* =====================================================
+   CAMBIAR ENTRE TARJETAS Y MAPA
+   ===================================================== */
+
+function toggleEstatusView(mode, btn) {
+
+    // Cambiar botón activo
+    document
+        .querySelectorAll('.estatus-toggle button')
+        .forEach(button => {
+            button.classList.remove('active');
+        });
+
+    btn.classList.add('active');
+
+
+    // Mostrar tarjetas
+    document.getElementById(
+        'estatus-grid-wrap'
+    ).style.display =
+        mode === 'grid' ? 'grid' : 'none';
+
+
+    // Mostrar mapa
+    document.getElementById(
+        'estatus-map-wrap'
+    ).style.display =
+        mode === 'map' ? 'block' : 'none';
+
+
+    // Si seleccionan mapa
+    if (mode === 'map') {
+
+        inicializarMapaEstatus();
+
+        // Ajustar mapa después de hacerse visible
+        setTimeout(() => {
+
+            if (mapEstatus) {
+                mapEstatus.invalidateSize();
+            }
+
+        }, 150);
+    }
+
+}
+
+</script>
+<script>
+function enter() {
+
+    // Ocultar pantalla de inicio de sesión
+    document.getElementById('login-screen').style.display = 'none';
+
+    // Mostrar el sistema
+    document.getElementById('app').classList.add('active');
+
+}
+</script>
+</body>
+>>>>>>> Stashed changes
 </html>
